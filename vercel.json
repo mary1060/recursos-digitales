@@ -1,36 +1,42 @@
 {
-  "_comentario": [
-    "El orden importa: cuando dos reglas casan con la misma ruta, gana la ULTIMA.",
-    "Por eso el comodin va primero y las reglas concretas despues. Antes estaba al",
-    "reves y el comodin pisaba el Cache-Control de los PDF sin que se notara.",
-    "",
-    "Los PDF y las portadas se REEMPLAZAN en su sitio, conservando el nombre para no",
-    "romper los enlaces ya enviados. Con una caché larga, una guia actualizada tarda",
-    "hasta un dia en verse, y no en todas partes a la vez: depende del nodo de la CDN",
-    "que atienda a cada persona. Paso el 24-ago-2026. Con 5 minutos y revalidacion",
-    "por ETag, la actualizacion se ve enseguida y el trafico apenas sube: si el",
-    "archivo no cambio, la respuesta es un 304 vacio."
-  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
       ]
     },
     {
       "source": "/(.*\\.pdf)",
       "headers": [
-        { "key": "Content-Type", "value": "application/pdf" },
-        { "key": "Content-Disposition", "value": "inline" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Cache-Control", "value": "public, max-age=300, s-maxage=300, must-revalidate" }
+        {
+          "key": "Content-Type",
+          "value": "application/pdf"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "inline"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, s-maxage=300, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*\\.(jpg|jpeg|png|webp|gif|svg))",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=300, s-maxage=300, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300, s-maxage=300, must-revalidate"
+        }
       ]
     }
   ]
