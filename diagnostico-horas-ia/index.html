@@ -424,9 +424,9 @@ footer{padding-block:34px 20px;color:var(--muted);font-size:.86rem}
     <div class="gift">
       <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="1.5"/><path d="M3 12h18M12 8v13"/><path d="M12 8c-1.2-2.8-5-3.8-5-1.4C7 8 10 8 12 8z"/><path d="M12 8c1.2-2.8 5-3.8 5-1.4C17 8 14 8 12 8z"/></svg></span>
       <div>
-        <p class="gift-tag">Tu regalo</p>
-        <h3>Guía de prompts para tus tareas repetitivas</h3>
-        <p class="d">Un prompt listo para copiar por cada tarea de este diagnóstico, más un plan de 4 semanas para convertirlo en hábito. Gratis, en PDF.</p>
+        <p class="gift-tag" id="giftTag">Tu regalo</p>
+        <h3 id="giftTitle">Guía de prompts para tus tareas repetitivas</h3>
+        <p class="d" id="giftText">Un prompt listo para copiar por cada tarea de este diagnóstico, más un plan de 4 semanas para convertirlo en hábito. Gratis, en PDF.</p>
         <p class="gift-mine" id="giftMine" hidden>Tus prompts clave:</p>
       </div>
       <a class="btn btn-gift" id="giftBtn" href="https://app.marycardenas.ai/regalo/guia-de-prompts-tareas-repetitivas" target="_blank" rel="noopener">Descargar la guía</a>
@@ -509,6 +509,7 @@ footer{padding-block:34px 20px;color:var(--muted);font-size:.86rem}
     whatsapp: '525534275258',                       // WhatsApp de Mary (sin + ni espacios)
     newsletter: 'https://newsletter.marycardenas.ai',
     giftUrl: 'https://app.marycardenas.ai/regalo/guia-de-prompts-tareas-repetitivas',  // landing del regalo (donde se registra el lead)
+    pdfUrl: 'https://recursos.marycardenas.ai/guias/guia-de-prompts-tareas-repetitivas-2026.pdf',  // para quien ya tiene la guía (llega con ?desde=guia)
     shareUrl: 'https://recursos.marycardenas.ai/diagnostico-horas-ia/'   // enlace público del diagnóstico
   };
 
@@ -854,7 +855,23 @@ footer{padding-block:34px 20px;color:var(--muted);font-size:.86rem}
   var shareText = 'Calculé cuántas horas me puede devolver la IA cada semana. Hazlo tú en 2 minutos: ' + CONFIG.shareUrl;
   $('shareWa').href = 'https://wa.me/?text=' + encodeURIComponent(shareText);
   $('copyField').value = CONFIG.shareUrl;
-  $('giftBtn').href = CONFIG.giftUrl;
+  // Dos puertas: quien llega desde el correo o el PDF de la guía (?desde=guia) ya la tiene.
+  // Se recuerda en este navegador para las siguientes visitas.
+  var fromGuide = /[?&]desde=guia(&|$)/.test(location.search || '');
+  var hasGuide = fromGuide;
+  try {
+    if (fromGuide) localStorage.setItem('horas-ia-guia', '1');
+    hasGuide = fromGuide || localStorage.getItem('horas-ia-guia') === '1';
+  } catch (e) {}
+  if (hasGuide) {
+    $('giftTag').textContent = 'Tu guía';
+    $('giftTitle').textContent = 'Ya tienes tu Guía de prompts';
+    $('giftText').textContent = 'Te llegó a tu correo. Ábrela y empieza por los prompts de las tareas que más tiempo te devuelven.';
+    $('giftBtn').textContent = 'Abrir la guía (PDF)';
+    $('giftBtn').href = CONFIG.pdfUrl;
+  } else {
+    $('giftBtn').href = CONFIG.giftUrl;
+  }
   function toast(t){
     var el = $('toast'); el.textContent = t; el.hidden = false;
     clearTimeout(toast._t); toast._t = setTimeout(function(){ el.hidden = true; }, 2200);
