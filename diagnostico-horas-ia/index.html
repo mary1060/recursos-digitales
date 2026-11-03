@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%230F6E5F%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2242%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3Emc%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://recursos.marycardenas.ai/diagnostico-horas-ia/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://recursos.marycardenas.ai/diagnostico-horas-ia/">
+<meta property="og:title" content="¿Cuántas horas te devuelve la IA cada semana?">
+<meta property="og:description" content="Diagnóstico gratuito de Mary Cárdenas: elige tu perfil, marca tus tareas repetitivas y calcula cuántas horas al año puedes recuperar con IA.">
+<meta property="og:image" content="https://recursos.marycardenas.ai/portadas/diagnostico-horas-ia.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="es_LA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Mary Cárdenas">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Horas que te devuelve la IA</title>
+<meta name="description" content="Diagnóstico gratuito de marycardenas.ai: calcula cuántas horas puedes recuperar con IA en tus tareas repetitivas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: columna de 1080px; héroe en dos columnas sobre papel cuadriculado; perfiles y tareas en tarjetas con ícono; resultado en tablero de 48 semanas; contador fijo abajo */
+:root{
+  --bg:#F3F6F5;
+  --surface:#FFFFFF;
+  --surface-2:#E9EFEC;
+  --ink:#11211E;
+  --muted:#55645F;
+  --line:#D6E0DC;
+  --grid:rgba(15,110,95,.075);
+  --brand:#0F6E5F;
+  --brand-ink:#FFFFFF;
+  --brand-soft:#DFF1EB;
+  --gain:#D9512F;
+  --gain-soft:#FBE6DF;
+  --slow:#C3CECA;
+  --deep:#0E2B26;
+  --deep-ink:#EAF4F1;
+  --gift-bg:#B9441F;
+  --gift-ink:#FFFFFF;
+  --shadow:0 1px 2px rgba(17,33,30,.05),0 10px 30px -12px rgba(17,33,30,.16);
+  --font-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --font-body:"Instrument Sans","Helvetica Neue",Arial,system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:16px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C1513;--surface:#14201D;--surface-2:#1A2925;--ink:#E3ECE9;--muted:#9AABA5;--line:#263632;--grid:rgba(60,196,166,.06);
+    --brand:#3CC4A6;--brand-ink:#05201A;--brand-soft:#123A32;--gain:#FF8C6B;--gain-soft:#3A2019;--slow:#34463F;--gift-bg:#FF8C6B;--gift-ink:#22100A;
+    --deep:#0A2420;--deep-ink:#E3F2EE;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -12px rgba(0,0,0,.55);color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C1513;--surface:#14201D;--surface-2:#1A2925;--ink:#E3ECE9;--muted:#9AABA5;--line:#263632;--grid:rgba(60,196,166,.06);
+  --brand:#3CC4A6;--brand-ink:#05201A;--brand-soft:#123A32;--gain:#FF8C6B;--gain-soft:#3A2019;--slow:#34463F;--gift-bg:#FF8C6B;--gift-ink:#22100A;
+  --deep:#0A2420;--deep-ink:#E3F2EE;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px -12px rgba(0,0,0,.55);color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.55;padding-bottom:96px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--font-display);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+a{color:var(--brand)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px;border-radius:8px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.num{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+
+/* Header */
+.top{border-bottom:1px solid var(--line);background:var(--surface)}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px;flex-wrap:wrap}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:var(--font-display);font-weight:700;font-size:1.05rem}
+.logo-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--brand);color:var(--brand-ink);font-size:.95rem;letter-spacing:-.02em}
+.logo .dot{color:var(--brand)}
+.top-tag{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+/* Hero */
+.hero{background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px;border-bottom:1px solid var(--line)}
+.hero-in{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:48px;align-items:center;padding-block:56px 60px}
+.eyebrow{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--brand);margin-bottom:14px}
+.hero h1{font-size:clamp(2.1rem,5vw,3.5rem);font-weight:800;letter-spacing:-.025em}
+.hero h1 em{font-style:normal;color:var(--gain)}
+.lead{margin-top:18px;font-size:1.1rem;color:var(--muted);max-width:56ch}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.steps{list-style:none;display:flex;gap:8px 22px;flex-wrap:wrap;padding:0;margin:30px 0 0;color:var(--muted);font-size:.92rem;font-weight:600}
+.steps li{display:flex;align-items:center;gap:8px}
+.steps b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--brand);color:var(--brand);font-family:var(--font-mono);font-size:.78rem}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:12px;border:1.5px solid transparent;font-weight:600;font-size:.98rem;cursor:pointer;text-decoration:none;transition:transform .15s ease,background-color .15s ease,border-color .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--brand);color:var(--brand-ink)}
+.btn-ghost{background:var(--surface);color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--brand)}
+.btn svg{width:18px;height:18px;flex:none}
+
+.example{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px 26px 22px;box-shadow:var(--shadow)}
+.example-tag{position:absolute;top:-12px;left:22px;background:var(--gain-soft);color:var(--gain);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid var(--gain)}
+.example-who{font-size:.95rem;color:var(--muted)}
+.example-num{font-family:var(--font-display);font-weight:800;font-size:4.2rem;line-height:1;margin-top:14px;color:var(--gain);letter-spacing:-.03em}
+.example-num small{font-size:1.6rem;margin-left:4px;color:var(--ink)}
+.example-unit{font-weight:600;margin-top:4px}
+.mini-bars{display:grid;gap:8px;margin-top:18px}
+.mini-row{display:grid;grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:10px;font-size:.8rem;color:var(--muted);white-space:nowrap}
+.mini-track{height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.mini-fill{height:100%;border-radius:999px}
+.mini-row .num{text-align:right;color:var(--ink)}
+.example-foot{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-size:.9rem;color:var(--muted)}
+
+/* Sections */
+.section{padding-block:64px}
+.section.alt{background:var(--surface);border-block:1px solid var(--line)}
+.sec-head{display:flex;gap:18px;align-items:flex-start;margin-bottom:30px}
+.sec-num{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--brand-soft);color:var(--brand);font-family:var(--font-mono);font-weight:600;font-size:1.05rem}
+.sec-head h2{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:800}
+.sec-head p{margin-top:8px;color:var(--muted);max-width:62ch}
+.sub{font-size:1.15rem;font-weight:700;margin:40px 0 14px}
+
+/* Profiles */
+.profiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.profile{display:flex;gap:14px;align-items:flex-start;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:16px;cursor:pointer;transition:border-color .15s ease,background-color .15s ease}
+.profile:hover{border-color:var(--brand)}
+.profile[aria-checked="true"]{border-color:var(--brand);background:var(--brand-soft)}
+.ico{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--surface-2);color:var(--brand)}
+.profile[aria-checked="true"] .ico{background:var(--brand);color:var(--brand-ink)}
+.ico svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.profile b{display:block;font-size:1rem}
+.profile span.d{display:block;font-size:.86rem;color:var(--muted);margin-top:2px}
+
+.levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1.5px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.level{text-align:left;padding:14px 16px;border:0;border-right:1.5px solid var(--line);background:transparent;cursor:pointer;display:flex;flex-direction:column;gap:3px}
+.level:last-child{border-right:0}
+.level b{font-size:.98rem}
+.level span{font-size:.84rem;color:var(--muted)}
+.level .meter{display:flex;gap:3px;margin-bottom:6px}
+.level .meter i{width:16px;height:6px;border-radius:3px;background:var(--slow)}
+.level[aria-checked="true"]{background:var(--brand-soft);box-shadow:inset 0 -3px 0 var(--brand)}
+.level[aria-checked="true"] .meter i.on{background:var(--brand)}
+
+/* Tally */
+.tally{display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));gap:12px;align-items:stretch;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:12px;margin-bottom:22px}
+.period{display:flex;flex-direction:column;justify-content:center;gap:4px;padding:2px 6px}
+.period-label{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.seg{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:3px}
+.seg button{border:0;background:transparent;padding:6px 12px;border-radius:7px;cursor:pointer;font-size:.88rem;font-weight:600;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-width:0}
+.stat dt{font-size:.74rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:6px}
+.stat dt i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.stat dd{margin:4px 0 0;font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-size:1.35rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stat.win{background:var(--gain-soft);border-color:var(--gain)}
+.stat.win dd{color:var(--gain)}
+
+/* Tasks */
+.tasks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.task{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:18px;transition:border-color .15s ease,box-shadow .15s ease}
+.section.alt .task{background:var(--bg)}
+.task.on{border-color:var(--brand);box-shadow:var(--shadow)}
+.section.alt .task.on{background:var(--surface)}
+.task-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.chip svg{width:16px;height:16px;fill:none;stroke:var(--brand);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.rec{font-size:.72rem;font-weight:700;color:var(--brand);background:var(--brand-soft);padding:3px 9px;border-radius:999px}
+.task h3{font-size:1.12rem;font-weight:700}
+.task p.d{font-size:.9rem;color:var(--muted);margin-top:-6px}
+.times{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:0}
+.times div{background:var(--surface-2);border-radius:10px;padding:8px 10px;min-width:0}
+.times dt{font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.times dd{margin:2px 0 0;font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-weight:600;font-size:.98rem}
+.times div.save{background:var(--gain-soft)}
+.times div.save dd{color:var(--gain)}
+.task-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.stepper{display:flex;align-items:center;gap:10px}
+.stepper button{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;font-size:1.25rem;line-height:1;display:grid;place-items:center}
+.stepper button.plus{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.stepper button:disabled{opacity:.4;cursor:default}
+.stepper output{font-family:var(--font-mono);font-weight:600;font-size:1.2rem;min-width:2ch;text-align:center}
+.stepper small{font-size:.84rem;color:var(--muted);line-height:1.2}
+.adjust{border:0;background:none;color:var(--brand);font-weight:600;font-size:.86rem;cursor:pointer;padding:6px 0;text-decoration:underline;text-underline-offset:3px}
+.adjust-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:.9rem;color:var(--muted);background:var(--surface-2);border-radius:10px;padding:10px 12px}
+.adjust-row input{width:82px;min-height:38px;border-radius:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font-family:var(--font-mono);font-size:1rem;padding:0 10px}
+.note{margin-top:18px;font-size:.88rem;color:var(--muted)}
+
+/* Result */
+.result-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;min-width:0}
+.card h3{font-size:1.05rem;font-weight:700;margin-bottom:14px}
+.res-label{font-weight:600;color:var(--muted)}
+.res-big{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:6px}
+.res-big .n{font-family:var(--font-display);font-weight:800;font-size:clamp(4rem,11vw,6.5rem);line-height:.95;color:var(--gain);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.res-big .u{font-family:var(--font-display);font-weight:700;font-size:1.5rem}
+.res-eq{margin-top:10px;font-size:1.05rem}
+.res-eq b{font-family:var(--font-mono)}
+.weeks{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:5px;margin-top:22px}
+.wk{aspect-ratio:1;max-width:100%;border-radius:5px;background:var(--surface-2);position:relative;overflow:hidden}
+.wk i{position:absolute;inset:0 auto 0 0;background:var(--gain);border-radius:inherit}
+.weeks-cap{font-size:.84rem;color:var(--muted);margin-top:10px}
+.side{display:grid;gap:16px;align-content:start}
+.bars{display:grid;gap:12px}
+.bar-row{display:grid;grid-template-columns:68px minmax(0,1fr) 92px;gap:10px;align-items:center;font-size:.86rem}
+.bar-row span:first-child{color:var(--muted);font-weight:600}
+.bar-track{height:14px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.bar-fill{height:100%;border-radius:999px;transition:width .35s ease}
+.bar-row .num{text-align:right;font-weight:600}
+.top-list{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:t}
+.top-list li{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:.93rem;counter-increment:t}
+.top-list li::before{content:counter(t);display:grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--brand-soft);color:var(--brand);font-family:var(--font-mono);font-weight:600;font-size:.82rem}
+.top-list .num{color:var(--gain);font-weight:600;white-space:nowrap}
+.empty{color:var(--muted);font-size:.92rem}
+.gap-card{background:var(--brand-soft);border-color:transparent}
+.gap-card p{font-size:.95rem}
+.gap-card b{font-family:var(--font-mono)}
+.res-msg{margin-top:20px;font-size:1.1rem;max-width:70ch}
+.res-caveat{margin-top:10px;font-size:.86rem;color:var(--muted);max-width:80ch}
+.gift{margin-top:28px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px;align-items:center;background:var(--gain-soft);border:1.5px solid var(--gain);border-radius:22px;padding:22px 24px}
+.gift .ico{width:52px;height:52px;border-radius:14px;background:var(--gift-bg);color:var(--gift-ink)}
+.gift .ico svg{width:26px;height:26px}
+.gift-tag{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--gain)}
+.gift h3{font-size:1.35rem;font-weight:800;margin-top:2px}
+.gift p.d{margin-top:6px;color:var(--ink);opacity:.85;max-width:62ch}
+.gift-mine{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.88rem;font-weight:600}
+.gift-mine span{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 10px 3px 4px;font-weight:500}
+.gift-mine span b{font-family:var(--font-mono);font-size:.78rem;background:var(--brand-soft);color:var(--brand);border-radius:999px;padding:1px 7px}
+.btn-gift{background:var(--gift-bg);color:var(--gift-ink);white-space:nowrap}
+@media (max-width:640px){.gift{grid-template-columns:minmax(0,1fr);gap:14px;padding:20px}.btn-gift{width:100%}}
+
+/* CTA */
+.cta h2{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:800;margin-bottom:24px}
+.cta-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cta-card{border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;border:1px solid var(--line);background:var(--surface)}
+.cta-card h3{font-size:1.45rem;font-weight:800}
+.cta-card p{color:var(--muted)}
+.cta-card .btn{margin-top:6px}
+.cta-card .link{font-weight:600;font-size:.92rem}
+.cta-card.deep{background:var(--deep);border-color:var(--deep);color:var(--deep-ink)}
+.cta-card.deep p{color:var(--deep-ink);opacity:.82}
+.cta-card.deep .btn{background:var(--deep-ink);color:var(--deep)}
+.cta-card .ico{width:48px;height:48px}
+.cta-card.deep .ico{background:rgba(255,255,255,.1);color:var(--deep-ink)}
+.sig{font-size:.84rem;margin-top:auto;padding-top:6px}
+.share{margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border:1.5px dashed var(--line);border-radius:22px;padding:20px 24px}
+.share h3{font-size:1.15rem;font-weight:700}
+.share p{color:var(--muted);font-size:.9rem;margin-top:4px}
+.share-actions{display:flex;gap:10px;flex-wrap:wrap}
+.copy-field{margin-top:10px;width:100%;font-family:var(--font-mono);font-size:.85rem;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+
+/* Sources */
+.method{max-width:75ch;color:var(--muted);margin-bottom:22px}
+.method b{color:var(--ink)}
+.sources{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.sources li{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--bg);display:flex;flex-direction:column;gap:6px;min-width:0}
+.sources .who{font-weight:700;font-size:.95rem}
+.sources .what{font-size:.9rem;color:var(--muted)}
+.sources a{font-size:.86rem;font-weight:600;word-break:break-word}
+
+footer{padding-block:34px 20px;color:var(--muted);font-size:.86rem}
+.foot-in{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* Dock */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -8px 24px -16px rgba(0,0,0,.3);padding-bottom:env(safe-area-inset-bottom,0px);transition:transform .25s ease}
+.dock.away{transform:translateY(110%)}
+.dock-in{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:10px}
+.dock-txt{min-width:0;font-size:.92rem;line-height:1.3}
+.dock-txt b{font-family:var(--font-mono);color:var(--gain);font-size:1.05rem}
+.dock-txt span{color:var(--muted)}
+.dock .btn{min-height:42px;flex:none}
+
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:10px 16px;border-radius:10px;font-size:.9rem;font-weight:600;z-index:30}
+
+@media (max-width:900px){
+  .hero-in{grid-template-columns:minmax(0,1fr);gap:40px;padding-block:40px 48px}
+  .profiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .result-grid,.cta-grid{grid-template-columns:minmax(0,1fr)}
+  .tally{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .period{grid-column:1 / -1;flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap}
+}
+@media (max-width:640px){
+  .section{padding-block:48px}
+  .profiles,.tasks,.sources{grid-template-columns:minmax(0,1fr)}
+  .levels{grid-template-columns:minmax(0,1fr)}
+  .level{border-right:0;border-bottom:1.5px solid var(--line)}
+  .level:last-child{border-bottom:0}
+  .tally{grid-template-columns:minmax(0,1fr);gap:8px}
+  .stat{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px}
+  .stat dd{margin:0;font-size:1.1rem}
+  .cta-card .btn{width:100%}
+  .sec-head{gap:12px}
+  .sec-num{width:38px;height:38px}
+  .weeks{grid-template-columns:repeat(8,minmax(0,1fr))}
+  .example-num{font-size:3.6rem}
+}
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="logo" href="https://marycardenas.ai" target="_blank" rel="noopener"><span class="logo-mark" aria-hidden="true">mc</span><span>marycardenas<span class="dot">.ai</span></span></a>
+    <span class="top-tag">Recurso gratuito · IA Entusiastas</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <p class="eyebrow">Diagnóstico en 2 minutos</p>
+      <h1>¿Cuántas horas te <em>devuelve</em> la IA cada semana?</h1>
+      <p class="lead">Marca las tareas que se repiten en tu trabajo, cuántas veces las haces y cómo usas hoy la IA. Te mostramos el tiempo que puedes recuperar, con referencias de estudios publicados.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" type="button" data-go="paso-perfil">Empezar mi diagnóstico</button>
+        <button class="btn btn-ghost" type="button" data-go="fuentes">De dónde salen los tiempos</button>
+      </div>
+      <ol class="steps" aria-label="Pasos">
+        <li><b>1</b>Tu perfil</li>
+        <li><b>2</b>Tus tareas</li>
+        <li><b>3</b>Tu resultado y tu regalo</li>
+      </ol>
+    </div>
+    <aside class="example" aria-label="Ejemplo de resultado">
+      <span class="example-tag">Ejemplo</span>
+      <p class="example-who">Una líder de proyectos que cada semana hace 3 minutas, 1 informe de avance y responde 10 correos, y usa la IA a veces.</p>
+      <p class="example-num"><span id="exHours">0</span><small>h</small></p>
+      <p class="example-unit">recuperadas al año</p>
+      <div class="mini-bars">
+        <div class="mini-row"><span>Sin IA</span><div class="mini-track"><div class="mini-fill" id="exBarSin" style="width:100%;background:var(--slow)"></div></div><span class="num" id="exSin"></span></div>
+        <div class="mini-row"><span>Con IA</span><div class="mini-track"><div class="mini-fill" id="exBarCon" style="width:50%;background:var(--brand)"></div></div><span class="num" id="exCon"></span></div>
+      </div>
+      <p class="example-foot">Por semana. Equivale a <b id="exWeeks">0</b> semanas de trabajo de 40 h al año.</p>
+    </aside>
+  </div>
+</section>
+
+<section id="paso-perfil" class="section">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="sec-num">1</span>
+      <div>
+        <h2>¿Desde dónde trabajas?</h2>
+        <p>Elige el perfil que más se parece al tuyo. Pondremos primero las tareas típicas de ese rol, aunque puedes marcar cualquiera.</p>
+      </div>
+    </header>
+    <div class="profiles" id="profiles" role="radiogroup" aria-label="Tu perfil"></div>
+
+    <h3 class="sub" id="levelTitle">¿Cómo usas hoy la IA?</h3>
+    <div class="levels" id="levels" role="radiogroup" aria-labelledby="levelTitle"></div>
+  </div>
+</section>
+
+<section id="paso-tareas" class="section alt">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="sec-num">2</span>
+      <div>
+        <h2>¿Qué se repite en tu semana?</h2>
+        <p>Usa + y − para indicar cuántas veces haces cada tarea por semana. Si tardas más o menos, ajusta tus minutos.</p>
+      </div>
+    </header>
+
+    <div class="tally" aria-live="polite">
+      <div class="period">
+        <span class="period-label">Ver por</span>
+        <div class="seg" id="periodSeg" role="group" aria-label="Periodo">
+          <button type="button" data-p="semana" aria-pressed="true">Semana</button>
+          <button type="button" data-p="mes" aria-pressed="false">Mes</button>
+          <button type="button" data-p="anio" aria-pressed="false">Año</button>
+        </div>
+      </div>
+      <dl class="stat" style="margin:0"><dt><i style="background:var(--slow)"></i>Sin IA</dt><dd id="tSin">0 min</dd></dl>
+      <dl class="stat" style="margin:0"><dt><i style="background:var(--brand)"></i>Con IA</dt><dd id="tCon">0 min</dd></dl>
+      <dl class="stat win" style="margin:0"><dt><i style="background:var(--gain)"></i>Recuperas</dt><dd id="tSave">0 min</dd></dl>
+    </div>
+
+    <div class="tasks" id="tasks"></div>
+    <p class="note">Son tiempos de referencia para una persona promedio. Ajusta minutos y frecuencia a tu realidad. El año cuenta 48 semanas laborales.</p>
+  </div>
+</section>
+
+<section id="resultado" class="section">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="sec-num">3</span>
+      <div>
+        <h2>Tu resultado</h2>
+        <p id="resIntro">Marca al menos una tarea en el paso 2 para ver cuánto tiempo puedes recuperar.</p>
+      </div>
+    </header>
+
+    <div class="result-grid">
+      <div class="card">
+        <p class="res-label">Puedes recuperar</p>
+        <p class="res-big"><span class="n" id="resHours">0</span><span class="u">horas al año</span></p>
+        <p class="res-eq" id="resEq">Equivale a <b>0</b> semanas de trabajo de 40 h.</p>
+        <div class="weeks" id="weeks" aria-hidden="true"></div>
+        <p class="weeks-cap">Cada cuadro es una semana laboral de 40 h. Los coloreados son el tiempo que recuperas en un año.</p>
+      </div>
+      <div class="side">
+        <div class="card">
+          <h3>Tu semana, antes y después</h3>
+          <div class="bars">
+            <div class="bar-row"><span>Sin IA</span><div class="bar-track"><div class="bar-fill" id="bSin" style="width:0;background:var(--slow)"></div></div><span class="num" id="bSinV">0 min</span></div>
+            <div class="bar-row"><span>Con IA</span><div class="bar-track"><div class="bar-fill" id="bCon" style="width:0;background:var(--brand)"></div></div><span class="num" id="bConV">0 min</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Dónde más ganas</h3>
+          <ol class="top-list" id="topList"></ol>
+          <p class="empty" id="topEmpty">Aquí verás las 3 tareas que más tiempo te devuelven.</p>
+        </div>
+        <div class="card gap-card">
+          <h3>Lo que aún puedes ganar</h3>
+          <p id="gapText">Elige cómo usas hoy la IA en el paso 1.</p>
+        </div>
+      </div>
+    </div>
+    <p class="res-msg" id="resMsg"></p>
+    <p class="res-caveat">Es una estimación orientativa. No incluye el tiempo de aprender, revisar y corregir lo que produce la IA, y el ahorro real depende de tus herramientas y del contexto de tu organización.</p>
+
+    <div class="gift">
+      <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="1.5"/><path d="M3 12h18M12 8v13"/><path d="M12 8c-1.2-2.8-5-3.8-5-1.4C7 8 10 8 12 8z"/><path d="M12 8c1.2-2.8 5-3.8 5-1.4C17 8 14 8 12 8z"/></svg></span>
+      <div>
+        <p class="gift-tag">Tu regalo</p>
+        <h3>Guía de prompts para tus tareas repetitivas</h3>
+        <p class="d">Un prompt listo para copiar por cada tarea de este diagnóstico, más un plan de 4 semanas para convertirlo en hábito. Gratis, en PDF.</p>
+        <p class="gift-mine" id="giftMine" hidden>Tus prompts clave:</p>
+      </div>
+      <a class="btn btn-gift" id="giftBtn" href="https://app.marycardenas.ai/regalo/guia-de-prompts-tareas-repetitivas" target="_blank" rel="noopener">Descargar la guía</a>
+    </div>
+  </div>
+</section>
+
+<section class="section cta" id="siguiente">
+  <div class="wrap">
+    <h2>¿Y ahora qué?</h2>
+    <div class="cta-grid">
+      <article class="cta-card">
+        <span class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M18.5 14.8c1.6.8 2.6 2.5 3 5.2"/></svg></span>
+        <h3>Aprende con IA Entusiastas</h3>
+        <p>Comunidad gratuita en WhatsApp con el newsletter semanal "IA para Entusiastas", casos prácticos y charlas para usar la IA con criterio en tu trabajo.</p>
+        <a class="btn btn-primary" id="ctaJoin" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4z"/></svg>
+          Pedir mi invitación por WhatsApp
+        </a>
+        <a class="link" id="ctaNews" href="https://newsletter.marycardenas.ai" target="_blank" rel="noopener">Leer el newsletter</a>
+      </article>
+      <article class="cta-card deep">
+        <span class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></svg></span>
+        <h3>Llévalo a tu equipo</h3>
+        <p>Si en tu equipo se repiten estas tareas, conversemos. Diagnóstico, formación práctica y acompañamiento para adoptar la IA con enfoque de gestión de proyectos.</p>
+        <a class="btn" id="ctaTeam" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4z"/></svg>
+          Conversar con Mary
+        </a>
+        <p class="sig">Mary Cárdenas · AI Adoption Consultant · PMP®</p>
+      </article>
+    </div>
+    <div class="share">
+      <div>
+        <h3>Compártelo</h3>
+        <p>El enlace abre un diagnóstico en blanco. No comparte tus tareas ni tu resultado.</p>
+      </div>
+      <div class="share-actions">
+        <a class="btn btn-ghost" id="shareWa" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+        <button class="btn btn-ghost" type="button" id="copyLink">Copiar enlace</button>
+      </div>
+      <input class="copy-field" id="copyField" readonly hidden aria-label="Enlace para compartir">
+    </div>
+  </div>
+</section>
+
+<section id="fuentes" class="section alt">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="sec-num" aria-hidden="true">≈</span>
+      <div>
+        <h2>De dónde salen los tiempos</h2>
+        <p>Usamos estudios con datos públicos. Cuando hay diferencias entre ellos, elegimos el lado prudente.</p>
+      </div>
+    </header>
+    <p class="method"><b>Cómo calculamos.</b> Los minutos "sin IA" son una referencia típica que puedes ajustar. El ahorro para quien usa la IA a diario y con método va de 30% a 74% según la tarea, por debajo del ~80% que reporta Anthropic, porque los ensayos controlados muestran ganancias menores. Para quien la usa a veces aplicamos 75% de ese ahorro y para quien casi no la usa, 50%. Esos dos factores son un supuesto de este diagnóstico, no un dato de un estudio.</p>
+    <ul class="sources" id="sources"></ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>Diagnóstico creado por Mary Cárdenas · <a href="https://marycardenas.ai" target="_blank" rel="noopener">marycardenas.ai</a></span>
+    <span>Versión noviembre 2026</span>
+  </div>
+</footer>
+
+<div class="dock" id="dock">
+  <div class="wrap dock-in">
+    <p class="dock-txt" id="dockTxt"><span>Marca tus tareas para calcular tu ahorro</span></p>
+    <button class="btn btn-primary" type="button" data-go="resultado">Ver mi resultado</button>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function(){
+  // ---------- Configuración editable ----------
+  var CONFIG = {
+    whatsapp: '525534275258',                       // WhatsApp de Mary (sin + ni espacios)
+    newsletter: 'https://newsletter.marycardenas.ai',
+    giftUrl: 'https://app.marycardenas.ai/regalo/guia-de-prompts-tareas-repetitivas',  // landing del regalo (donde se registra el lead)
+    shareUrl: 'https://recursos.marycardenas.ai/diagnostico-horas-ia/'   // enlace público del diagnóstico
+  };
+
+  var WEEKS_YEAR = 48, WEEKS_MONTH = 4;
+  var PERIOD_MULT = { semana: 1, mes: WEEKS_MONTH, anio: WEEKS_YEAR };
+  var PERIOD_TXT = { semana: 'por semana', mes: 'al mes', anio: 'al año' };
+
+  var ICONS = {
+    comunicar: '<path d="M4 5h16v11H8l-4 4z"/>',
+    analizar: '<path d="M5 20v-9M11 20V5M17 20v-7M3 20h18"/>',
+    planificar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+    personas: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M18.5 14.8c1.6.8 2.6 2.5 3 5.2"/>',
+    crear: '<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>',
+    pm: '<rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="10" rx="1"/><rect x="17" y="4" width="4" height="6" rx="1"/>',
+    pyme: '<path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/>',
+    consultor: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3M3 12h18"/>',
+    rh: '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/>',
+    formador: '<rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20l4-4 4 4"/>',
+    empresa: '<rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/>'
+  };
+  var CAT_NAME = { comunicar:'Comunicar', analizar:'Analizar', planificar:'Planificar', personas:'Personas', crear:'Crear' };
+  function svg(name){ return '<svg viewBox="0 0 24 24" aria-hidden="true">' + ICONS[name] + '</svg>'; }
+
+  // sin: minutos sin IA (referencia) · con: minutos con IA usando la IA a diario y con método
+  var TASKS = [
+    { id:'correos', cat:'comunicar', t:'Redactar y responder correos', d:'Borradores, tono adecuado y respuestas a mensajes que se repiten.', sin:15, con:8 },
+    { id:'minuta', cat:'comunicar', t:'Convertir una reunión en minuta y acuerdos', d:'De la grabación o tus notas a decisiones, responsables y fechas.', sin:40, con:12 },
+    { id:'informe', cat:'comunicar', t:'Preparar un informe de avance', d:'Consolidar avances, riesgos y próximos pasos para tu jefe o cliente.', sin:60, con:20 },
+    { id:'atencion', cat:'comunicar', t:'Responder dudas frecuentes de clientes', d:'Respuestas claras y consistentes a preguntas que llegan una y otra vez.', sin:10, con:7 },
+    { id:'leer', cat:'analizar', t:'Leer y resumir documentos largos', d:'Contratos, normas, informes o propuestas: lo clave en pocos minutos.', sin:50, con:13 },
+    { id:'investigar', cat:'analizar', t:'Investigar y comparar opciones', d:'Proveedores, herramientas o enfoques evaluados con criterios claros.', sin:60, con:25 },
+    { id:'datos', cat:'analizar', t:'Analizar datos en una hoja de cálculo', d:'Fórmulas, tablas dinámicas, gráficos y conclusiones.', sin:45, con:18 },
+    { id:'plan', cat:'planificar', t:'Planificar un proyecto o un sprint', d:'Entregables, tareas, dependencias y estimaciones en un primer borrador.', sin:90, con:35 },
+    { id:'riesgos', cat:'planificar', t:'Identificar riesgos y respuestas', d:'Lluvia de riesgos, probabilidad, impacto y planes de respuesta.', sin:45, con:18 },
+    { id:'procesos', cat:'planificar', t:'Documentar un proceso o procedimiento', d:'Pasos, responsables y excepciones en un documento que se entienda.', sin:75, con:25 },
+    { id:'agenda', cat:'planificar', t:'Organizar tu semana y prioridades', d:'Convertir pendientes, reuniones y metas en un plan realista.', sin:30, con:12 },
+    { id:'presentacion', cat:'crear', t:'Armar una presentación', d:'Estructurar el mensaje y llevarlo a láminas listas para revisar.', sin:90, con:35 },
+    { id:'contenido', cat:'crear', t:'Crear contenido para redes o boletín', d:'Pasar de una idea a un post, newsletter o guion de video.', sin:60, con:20 },
+    { id:'propuesta', cat:'crear', t:'Redactar una propuesta comercial', d:'Contexto del cliente, alcance, entregables, plazos y condiciones.', sin:90, con:35 },
+    { id:'puesto', cat:'personas', t:'Escribir un perfil de puesto y guía de entrevista', d:'Responsabilidades, competencias y preguntas para evaluar candidatos.', sin:45, con:15 },
+    { id:'capacitacion', cat:'personas', t:'Diseñar un material de capacitación', d:'Objetivos, actividades, ejemplos y evaluación de un taller o curso.', sin:120, con:40 }
+  ];
+
+  var PROFILES = [
+    { id:'pm', t:'Lidero proyectos', d:'PM, PMO, Scrum Master o líder de equipo', rec:['minuta','informe','plan','riesgos','correos','presentacion'] },
+    { id:'pyme', t:'Tengo una PYME', d:'Ventas, clientes y operación a la vez', rec:['propuesta','atencion','correos','contenido','datos','procesos'] },
+    { id:'consultor', t:'Soy consultor/a independiente', d:'Vendes, entregas y te diferencias', rec:['propuesta','investigar','presentacion','leer','contenido','minuta'] },
+    { id:'rh', t:'Trabajo en Gestión Humana', d:'Talento, formación y procesos de personas', rec:['puesto','capacitacion','procesos','correos','leer','datos'] },
+    { id:'formador', t:'Enseño o facilito', d:'Docente, facilitador/a o coach', rec:['capacitacion','presentacion','contenido','leer','investigar','correos'] },
+    { id:'empresa', t:'Trabajo en una empresa', d:'Correos, reuniones, informes y datos', rec:['correos','minuta','informe','leer','datos','agenda'] }
+  ];
+
+  var LEVELS = [
+    { id:'poco', t:'Casi no la uso', d:'Pruebas sueltas, sin rutina', f:0.5, bars:1 },
+    { id:'aveces', t:'La uso a veces', d:'En algunas tareas, sin un método fijo', f:0.75, bars:2 },
+    { id:'diario', t:'A diario y con método', d:'Instrucciones, plantillas y flujos propios', f:1, bars:3 }
+  ];
+
+  var SOURCES = [
+    { who:'Anthropic (2025)', what:'En 100.000 conversaciones con Claude, las tareas se completaron alrededor de 80% más rápido. Los autores advierten que no mide el tiempo de revisar y ajustar.', url:'https://www.anthropic.com/research/estimating-productivity-gains', label:'Estimating AI productivity gains' },
+    { who:'Noy y Zhang, Science (2023)', what:'En tareas de redacción profesional, ChatGPT redujo el tiempo 40% y subió la calidad 18%.', url:'https://economics.mit.edu/news/study-finds-chatgpt-boosts-worker-productivity-some-writing-tasks', label:'MIT Economics' },
+    { who:'Dell’Acqua et al., Harvard y BCG (2023)', what:'758 consultores terminaron 25,1% más rápido y con más de 40% de mejor calidad en tareas que la IA hace bien.', url:'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321', label:'Navigating the Jagged Technological Frontier' },
+    { who:'Brynjolfsson, Li y Raymond (NBER)', what:'En soporte al cliente: 14% más casos resueltos por hora, y 34% en el personal con menos experiencia.', url:'https://www.nber.org/papers/w31161', label:'Generative AI at Work' },
+    { who:'Microsoft Research (2025)', what:'Ensayo con 7.137 personas en 66 empresas: 1,4 horas menos de correo por semana. Sin cambios claros en el tiempo de reuniones.', url:'https://arxiv.org/abs/2504.11436', label:'Shifting Work Patterns with Generative AI' },
+    { who:'Bick, Blandin y Deming · Fed de St. Louis (2026)', what:'En EE.UU. el ahorro agregado ronda 2,2% de las horas de trabajo. El potencial por tarea es alto, pero la adopción aún es baja.', url:'https://fredblog.stlouisfed.org/2026/08/does-generative-ai-save-time-at-work/', label:'Does generative AI save time at work?' }
+  ];
+
+  // ---------- Estado ----------
+  var state = { profile:null, level:'aveces', period:'semana', freq:{}, mins:{} };
+  var STORE_KEY = 'horas-ia-v1';
+  try {
+    var saved = JSON.parse(localStorage.getItem(STORE_KEY) || 'null');
+    if (saved && typeof saved === 'object') {
+      state.profile = saved.profile || null;
+      state.level = saved.level || 'aveces';
+      state.period = saved.period || 'semana';
+      state.freq = saved.freq || {};
+      state.mins = saved.mins || {};
+    }
+  } catch (e) {}
+  function persist(){ try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
+
+  var $ = function(id){ return document.getElementById(id); };
+  var nf1 = new Intl.NumberFormat('es', { maximumFractionDigits:1, minimumFractionDigits:1 });
+  var nf0 = new Intl.NumberFormat('es', { maximumFractionDigits:0 });
+
+  function levelF(){ var l = LEVELS.filter(function(x){return x.id===state.level;})[0]; return l ? l.f : 0.75; }
+  function sinOf(t){ var m = state.mins[t.id]; return (m && m > 0) ? m : t.sin; }
+  function conOf(t, f){ var s = sinOf(t); var ref = s * (t.con / t.sin); return s - (s - ref) * f; }
+  function fmt(min){
+    min = Math.max(0, min);
+    if (min < 60) return nf0.format(Math.round(min)) + ' min';
+    var h = Math.floor(min / 60), m = Math.round(min % 60);
+    if (m === 60) { h += 1; m = 0; }
+    if (h >= 100 || m === 0) return nf0.format(Math.round(min / 60)) + ' h';
+    return h + ' h ' + m + ' min';
+  }
+
+  function totals(f, freqMap){
+    var sin = 0, con = 0, rows = [];
+    TASKS.forEach(function(t){
+      var n = freqMap[t.id] || 0;
+      if (!n) return;
+      var s = sinOf(t) * n, c = conOf(t, f) * n;
+      sin += s; con += c; rows.push({ t:t, save:s - c });
+    });
+    return { sin:sin, con:con, save:sin - con, rows:rows };
+  }
+
+  // ---------- Render inicial ----------
+  function renderProfiles(){
+    $('profiles').innerHTML = PROFILES.map(function(p){
+      return '<button type="button" class="profile" role="radio" aria-checked="false" data-id="' + p.id + '"><span class="ico">' + svg(p.id) + '</span><span><b>' + p.t + '</b><span class="d">' + p.d + '</span></span></button>';
+    }).join('');
+  }
+  function renderLevels(){
+    $('levels').innerHTML = LEVELS.map(function(l){
+      var meter = '';
+      for (var i = 1; i <= 3; i++) meter += '<i class="' + (i <= l.bars ? 'on' : '') + '"></i>';
+      return '<button type="button" class="level" role="radio" aria-checked="false" data-id="' + l.id + '"><span class="meter" aria-hidden="true">' + meter + '</span><b>' + l.t + '</b><span>' + l.d + '</span></button>';
+    }).join('');
+  }
+  function renderTasks(){
+    $('tasks').innerHTML = TASKS.map(function(t){
+      return '<article class="task" data-id="' + t.id + '">' +
+        '<div class="task-top"><span class="chip">' + svg(t.cat) + CAT_NAME[t.cat] + '</span><span class="rec" hidden>Típica de tu perfil</span></div>' +
+        '<h3>' + t.t + '</h3><p class="d">' + t.d + '</p>' +
+        '<dl class="times"><div><dt>Sin IA</dt><dd data-k="sin"></dd></div><div><dt>Con IA</dt><dd data-k="con"></dd></div><div class="save"><dt>Ahorras</dt><dd data-k="save"></dd></div></dl>' +
+        '<div class="task-foot"><div class="stepper"><button type="button" class="minus" aria-label="Una vez menos por semana: ' + t.t + '">−</button><output aria-live="polite">0</output><button type="button" class="plus" aria-label="Una vez más por semana: ' + t.t + '">+</button><small>veces por<br>semana</small></div>' +
+        '<button type="button" class="adjust" aria-expanded="false">Ajustar mis minutos</button></div>' +
+        '<div class="adjust-row" hidden><label for="min-' + t.id + '">Sin IA tardo</label><input type="number" inputmode="numeric" min="1" max="600" step="1" id="min-' + t.id + '"><span>min por vez</span></div>' +
+        '</article>';
+    }).join('');
+  }
+  function renderSources(){
+    $('sources').innerHTML = SOURCES.map(function(s){
+      return '<li><span class="who">' + s.who + '</span><span class="what">' + s.what + '</span><a href="' + s.url + '" target="_blank" rel="noopener">' + s.label + ' ↗</a></li>';
+    }).join('');
+  }
+  function renderWeeks(){
+    var html = '';
+    for (var i = 0; i < WEEKS_YEAR; i++) html += '<div class="wk"><i style="width:0"></i></div>';
+    $('weeks').innerHTML = html;
+  }
+
+  // ---------- Actualización ----------
+  function updateProfiles(){
+    Array.prototype.forEach.call(document.querySelectorAll('.profile'), function(b){
+      b.setAttribute('aria-checked', String(b.dataset.id === state.profile));
+    });
+    var prof = PROFILES.filter(function(p){ return p.id === state.profile; })[0];
+    var rec = prof ? prof.rec : [];
+    var wrap = $('tasks');
+    var cards = Array.prototype.slice.call(wrap.children);
+    cards.sort(function(a, b){
+      var ra = rec.indexOf(a.dataset.id), rb = rec.indexOf(b.dataset.id);
+      ra = ra < 0 ? 99 + TASKS.findIndex(function(t){return t.id===a.dataset.id;}) : ra;
+      rb = rb < 0 ? 99 + TASKS.findIndex(function(t){return t.id===b.dataset.id;}) : rb;
+      return ra - rb;
+    });
+    cards.forEach(function(c){
+      wrap.appendChild(c);
+      c.querySelector('.rec').hidden = rec.indexOf(c.dataset.id) < 0;
+    });
+  }
+  function updateLevels(){
+    Array.prototype.forEach.call(document.querySelectorAll('.level'), function(b){
+      b.setAttribute('aria-checked', String(b.dataset.id === state.level));
+    });
+  }
+  function updatePeriod(){
+    Array.prototype.forEach.call(document.querySelectorAll('#periodSeg button'), function(b){
+      b.setAttribute('aria-pressed', String(b.dataset.p === state.period));
+    });
+  }
+
+  function update(){
+    var f = levelF();
+    // Tarjetas
+    TASKS.forEach(function(t){
+      var card = document.querySelector('.task[data-id="' + t.id + '"]');
+      var n = state.freq[t.id] || 0;
+      var s = sinOf(t), c = conOf(t, f);
+      card.querySelector('[data-k="sin"]').textContent = '≈' + fmt(s);
+      card.querySelector('[data-k="con"]').textContent = '≈' + fmt(c);
+      card.querySelector('[data-k="save"]').textContent = '≈' + fmt(s - c);
+      card.querySelector('output').textContent = n;
+      card.querySelector('.minus').disabled = n === 0;
+      card.classList.toggle('on', n > 0);
+      var inp = card.querySelector('input');
+      if (document.activeElement !== inp) inp.value = Math.round(s);
+    });
+
+    var tot = totals(f, state.freq);
+    var mult = PERIOD_MULT[state.period];
+    $('tSin').textContent = fmt(tot.sin * mult);
+    $('tCon').textContent = fmt(tot.con * mult);
+    $('tSave').textContent = fmt(tot.save * mult);
+
+    // Resultado
+    var hoursYear = tot.save * WEEKS_YEAR / 60;
+    var weeks40 = hoursYear / 40;
+    var has = tot.rows.length > 0;
+    $('resHours').textContent = nf0.format(Math.round(hoursYear));
+    $('resEq').innerHTML = has
+      ? 'Equivale a <b>' + nf1.format(weeks40) + '</b> semanas de trabajo de 40 h, o <b>' + nf0.format(Math.round(hoursYear / 8)) + '</b> jornadas de 8 h.'
+      : 'Equivale a <b>0</b> semanas de trabajo de 40 h.';
+    var cells = $('weeks').children, rest = Math.min(weeks40, WEEKS_YEAR);
+    for (var i = 0; i < cells.length; i++) {
+      var fill = Math.max(0, Math.min(1, rest - i));
+      cells[i].firstChild.style.width = (fill * 100) + '%';
+    }
+    var prof = PROFILES.filter(function(p){ return p.id === state.profile; })[0];
+    $('resIntro').textContent = has
+      ? 'Con ' + tot.rows.length + (tot.rows.length === 1 ? ' tarea' : ' tareas') + (prof ? ' y perfil "' + prof.t.toLowerCase() + '"' : '') + ', esto es lo que la IA puede devolverte.'
+      : 'Marca al menos una tarea en el paso 2 para ver cuánto tiempo puedes recuperar.';
+
+    var maxW = Math.max(tot.sin, 1);
+    $('bSin').style.width = (has ? 100 : 0) + '%';
+    $('bCon').style.width = (has ? (tot.con / maxW * 100) : 0) + '%';
+    $('bSinV').textContent = fmt(tot.sin);
+    $('bConV').textContent = fmt(tot.con);
+
+    var top = tot.rows.slice().sort(function(a, b){ return b.save - a.save; }).slice(0, 3);
+    $('topList').innerHTML = top.map(function(r){
+      return '<li><span>' + r.t.t + '</span><span class="num">' + nf0.format(Math.round(r.save * WEEKS_YEAR / 60)) + ' h/año</span></li>';
+    }).join('');
+    $('topEmpty').hidden = has;
+
+    var lvl = LEVELS.filter(function(l){ return l.id === state.level; })[0];
+    if (!has) {
+      $('gapText').textContent = 'Cuando marques tus tareas verás cuánto más podrías ganar al usar la IA a diario y con método.';
+    } else if (f < 1) {
+      var full = totals(1, state.freq).save * WEEKS_YEAR / 60;
+      $('gapText').innerHTML = 'Con el uso que describes ("' + lvl.t.toLowerCase() + '") recuperas <b>' + nf0.format(Math.round(hoursYear)) + ' h</b> al año. Usándola a diario y con método llegarías a <b>' + nf0.format(Math.round(full)) + ' h</b>: <b>' + nf0.format(Math.round(full - hoursYear)) + ' h más</b>. Esa diferencia se cierra con práctica guiada y plantillas propias.';
+    } else {
+      $('gapText').textContent = 'Ya usas la IA a diario. El siguiente salto está en el equipo: flujos compartidos, criterios de calidad comunes y tareas documentadas.';
+    }
+
+    var msg = '';
+    if (has) {
+      if (hoursYear < 40) msg = 'Buen punto de partida. Empieza por la tarea que más se repite y conviértela en rutina antes de sumar otra.';
+      else if (hoursYear < 150) msg = 'Eso es tiempo real para pensar, planificar o descansar. El siguiente paso es estandarizar cómo usas la IA en esas tareas.';
+      else msg = 'Tu semana tiene mucho trabajo repetitivo. Aquí la IA rinde más cuando hay plantillas, criterios de calidad y flujos documentados.';
+    }
+    $('resMsg').textContent = msg;
+
+    // Regalo: prompts clave según sus tareas top (mismo número que en la guía)
+    var SHORT = { correos:'Correos', minuta:'Minutas', informe:'Informe de avance', atencion:'Dudas de clientes', leer:'Resumir documentos', investigar:'Comparar opciones', datos:'Análisis de datos', plan:'Plan de proyecto', riesgos:'Riesgos', procesos:'Procesos', agenda:'Tu semana', presentacion:'Presentaciones', contenido:'Contenido', propuesta:'Propuestas', puesto:'Perfil de puesto', capacitacion:'Capacitación' };
+    var gm = $('giftMine');
+    gm.hidden = !has;
+    gm.innerHTML = 'Tus prompts clave:' + top.map(function(r){
+      var n = TASKS.indexOf(r.t) + 1;
+      return ' <span><b>' + (n < 10 ? '0' + n : n) + '</b>' + SHORT[r.t.id] + '</span>';
+    }).join('');
+
+    // Dock
+    $('dockTxt').innerHTML = has
+      ? '<span>Recuperas</span> <b>' + fmt(tot.save) + '</b> <span>por semana · ' + nf0.format(Math.round(hoursYear)) + ' h al año</span>'
+      : '<span>Marca tus tareas para calcular tu ahorro</span>';
+
+    // Enlaces de WhatsApp
+    var perfil = prof ? prof.t.toLowerCase() : 'sin perfil';
+    var resumen = has ? ' Me salen unas ' + nf0.format(Math.round(hoursYear)) + ' horas al año que podría recuperar.' : '';
+    var join = 'Hola Mary, hice el diagnóstico de horas con IA (perfil: ' + perfil + ').' + resumen + ' Quiero unirme a IA Entusiastas.';
+    var team = 'Hola Mary, hice el diagnóstico de horas con IA (perfil: ' + perfil + ').' + resumen + ' Me interesa llevar esto a mi equipo. ¿Conversamos?';
+    $('ctaJoin').href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(join);
+    $('ctaTeam').href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(team);
+
+    persist();
+  }
+
+  function updateExample(){
+    var ex = { minuta:3, informe:1, correos:10 };
+    var keep = state.mins; state.mins = {};
+    var r = totals(0.75, ex);
+    state.mins = keep;
+    var h = r.save * WEEKS_YEAR / 60;
+    $('exHours').textContent = nf0.format(Math.round(h));
+    $('exWeeks').textContent = nf1.format(h / 40);
+    $('exSin').textContent = fmt(r.sin);
+    $('exCon').textContent = fmt(r.con);
+    $('exBarCon').style.width = (r.con / r.sin * 100) + '%';
+  }
+
+  // ---------- Eventos ----------
+  function go(id){
+    var el = $(id); if (!el) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block:'start' });
+  }
+  document.addEventListener('click', function(e){
+    var g = e.target.closest('[data-go]');
+    if (g) { go(g.dataset.go); return; }
+    var p = e.target.closest('.profile');
+    if (p) { state.profile = p.dataset.id; updateProfiles(); update(); return; }
+    var l = e.target.closest('.level');
+    if (l) { state.level = l.dataset.id; updateLevels(); update(); return; }
+    var pb = e.target.closest('#periodSeg button');
+    if (pb) { state.period = pb.dataset.p; updatePeriod(); update(); return; }
+    var card = e.target.closest('.task');
+    if (card) {
+      var id = card.dataset.id;
+      if (e.target.closest('.plus')) { state.freq[id] = Math.min(99, (state.freq[id] || 0) + 1); update(); return; }
+      if (e.target.closest('.minus')) { state.freq[id] = Math.max(0, (state.freq[id] || 0) - 1); update(); return; }
+      var adj = e.target.closest('.adjust');
+      if (adj) {
+        var row = card.querySelector('.adjust-row');
+        row.hidden = !row.hidden;
+        adj.setAttribute('aria-expanded', String(!row.hidden));
+        adj.textContent = row.hidden ? 'Ajustar mis minutos' : 'Listo';
+        if (!row.hidden) card.querySelector('input').focus();
+        return;
+      }
+    }
+  });
+  document.addEventListener('input', function(e){
+    if (!e.target.matches('.adjust-row input')) return;
+    var id = e.target.id.replace('min-', '');
+    var v = parseInt(e.target.value, 10);
+    if (v > 0 && v <= 600) { state.mins[id] = v; update(); }
+  });
+  document.addEventListener('change', function(e){
+    if (!e.target.matches('.adjust-row input')) return;
+    var id = e.target.id.replace('min-', '');
+    var v = parseInt(e.target.value, 10);
+    if (!(v > 0 && v <= 600)) { delete state.mins[id]; }
+    update();
+  });
+  // Atajos de teclado en grupos de radio
+  function arrowNav(groupSel, itemSel){
+    document.querySelector(groupSel).addEventListener('keydown', function(e){
+      if (['ArrowRight','ArrowDown','ArrowLeft','ArrowUp'].indexOf(e.key) < 0) return;
+      var items = Array.prototype.slice.call(this.querySelectorAll(itemSel));
+      var i = items.indexOf(document.activeElement); if (i < 0) return;
+      e.preventDefault();
+      var n = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? (i + 1) % items.length : (i - 1 + items.length) % items.length;
+      items[n].focus(); items[n].click();
+    });
+  }
+
+  // Compartir
+  var shareText = 'Calculé cuántas horas me puede devolver la IA cada semana. Hazlo tú en 2 minutos: ' + CONFIG.shareUrl;
+  $('shareWa').href = 'https://wa.me/?text=' + encodeURIComponent(shareText);
+  $('copyField').value = CONFIG.shareUrl;
+  $('giftBtn').href = CONFIG.giftUrl;
+  function toast(t){
+    var el = $('toast'); el.textContent = t; el.hidden = false;
+    clearTimeout(toast._t); toast._t = setTimeout(function(){ el.hidden = true; }, 2200);
+  }
+  $('copyLink').addEventListener('click', function(){
+    var field = $('copyField');
+    var fallback = function(){ field.hidden = false; field.focus(); field.select(); toast('Selecciona y copia el enlace'); };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(CONFIG.shareUrl).then(function(){ toast('Enlace copiado'); }, fallback);
+      } else fallback();
+    } catch (err) { fallback(); }
+  });
+
+  // Ocultar la barra fija cuando el resultado está a la vista
+  try {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ $('dock').classList.toggle('away', en.isIntersecting); });
+    }, { threshold:0.15 });
+    io.observe($('resultado'));
+  } catch (e) {}
+
+  renderProfiles(); renderLevels(); renderTasks(); renderSources(); renderWeeks();
+  arrowNav('#profiles', '.profile'); arrowNav('#levels', '.level');
+  updateProfiles(); updateLevels(); updatePeriod(); updateExample(); update();
+})();
+</script>
+
+</body>
+</html>
